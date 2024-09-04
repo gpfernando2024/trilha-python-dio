@@ -115,28 +115,23 @@ class ContaCorrente(Conta):
         self._limite = limite
         self._limite_saques = limite_saques
 
-    @classmethod
-    def nova_conta(cls, cliente, numero, limite, limite_saques):
-        return cls(numero, cliente, limite, limite_saques)
-
     def sacar(self, valor):
-        numero_saques = len(
-            [transacao for transacao in self.historico.transacoes if transacao["tipo"] == Saque.__name__]
+        saques_do_dia = len(
+            [transacao for transacao in self.historico.transacoes_do_dia() if transacao["tipo"] == Saque.__name__]
         )
 
         excedeu_limite = valor > self._limite
-        excedeu_saques = numero_saques >= self._limite_saques
+        excedeu_saques = saques_do_dia >= self._limite_saques
 
         if excedeu_limite:
             print("\n@@@ Operação falhou! O valor do saque excede o limite. @@@")
-
         elif excedeu_saques:
-            print("\n@@@ Operação falhou! Número máximo de saques excedido. @@@")
-
+            print("\n@@@ Operação falhou! Número máximo de saques diários excedido. @@@")
         else:
             return super().sacar(valor)
 
         return False
+
 
     def __str__(self):
         return f"""\
@@ -170,7 +165,8 @@ class Historico:
 
     # TODO: filtrar todas as transações realizadas no dia
     def transacoes_do_dia(self):
-        pass
+        hoje = datetime.now().date()
+        return [t for t in self._transacoes if t["data"].date() == hoje]
 
 
 class Transacao(ABC):
@@ -197,6 +193,7 @@ class Saque(Transacao):
 
         if sucesso_transacao:
             conta.historico.adicionar_transacao(self)
+
 
 
 class Deposito(Transacao):

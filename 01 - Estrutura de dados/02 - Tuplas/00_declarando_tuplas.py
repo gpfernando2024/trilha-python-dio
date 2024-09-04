@@ -1,8 +1,5 @@
 frutas = (
-    "laranja",
-    "pera",
-    "uva",
-)
+    "laranja")
 print(frutas)
 
 letras = tuple("python")
@@ -13,3 +10,7 @@ print(numeros)
 
 pais = ("Brasil",)
 print(pais)
+
+carros = ("gol")
+
+print(isinstance(carros, tuple))

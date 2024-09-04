@@ -12,3 +12,5 @@ print(numeros)
 
 carro = ["Ferrari", "F8", 4200000, 2020, 2900, "São Paulo", True]
 print(carro)
+
+[n**2 if n > 6 else n for n in range(10) if n % 2 == 0] 

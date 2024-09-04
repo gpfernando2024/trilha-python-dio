@@ -1,0 +1,15 @@
+Objetivo Geral:
+Separar as funções existenste de saque, depósito e extrato em funções. Criar duas novas funções: 
+Cadastrar Usuário (cliente) e cadastrar conta bancária.
+A função de saque deve receber os argumentos apenas por nome (keyword only). 
+Sugestão de arqgumentos: 
+saldo, valor, extrato,limite, numero_saques, limite_saques. Sugestão de retorno: saldo e extrato.
+A função depósito deve receber os arqumentos apenas por posição (positional only). 
+Sugestão de argumentos: 
+A função Extrato deve receber os argumentos por posição e nome (positional only e keyword only). argumentos posicionais: saldo, argumentos nomeados: extrato
+saldo, valor, extrato. Sugestão de retorno: saldo e extrato
+Criar duas novas funções: criar usuário e criar conta corrente. 
+Criar também listar contas por usuário e desativar conta conta corrente.
+Função Criar usuário (cliente) - o sistema deverá armazenar em uma lista um usuário composto por: nome, data de nascimento, cpf, endereço. O endereço é uma string com o formato : logradouro - nro - bairro - cidade/sigla estado. Deve ser armazenado somente os numeros do CPF sem formatação. Não pode armazenar 2 usuários com o mesmo CPF.
+Funcção Criar conta conrrente - o sistema deve armazenar um uma lista. A conta corrente é composta por: agência, numero da conta e usuário. O numero da conta é sequencial, iniciando em 1. O número da agência é fixo: "0001". O usuário pode ter mais de uma conta, mas uma conta pertence somente.
+Para vincular um usuário a uma conta, filtre a lista de usuários buscando o número do CPF informado para cada usuário da lista.   
